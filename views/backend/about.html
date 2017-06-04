@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{ template "inc/backend_head" . }}
+</head>
+
+<body>
+    {{ template "inc/backend_menu" . }}
+    <div class="backend-width">
+        <div class="pure-form pure-form-stacked">
+            <fieldset>
+                <div class="pure-g">
+                    <div class="pure-u-1">
+                        <label for="content">Introduce yourself...</label>
+                        <textarea name="content" id="content" cols="30" rows="25" class="pure-u-24-24">{{.Page.Content}}</textarea>
+                    </div>
+                </div>
+                <button type="button" class="pure-button pure-button-primary" onclick="about_update();">Submit</button>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

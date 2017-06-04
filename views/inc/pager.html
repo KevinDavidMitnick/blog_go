@@ -1,0 +1,19 @@
+{{if gt .Pager.PageNums 1}}
+<ul class="pagination mt0 mb20">
+    {{if .Pager.HasPrev}}
+    <li><a href="{{.Pager.PageLinkPrev}}">&#171;</a></li>
+    {{else}}
+    <li class="disabled"><a>&#171;</a></li>
+    {{end}}
+    {{range $index, $page := .Pager.Pages}}
+    <li{{if $.Pager.IsActive .}} class="active"{{end}}>
+    <a href="{{$.Pager.PageLink $page}}">{{$page}}</a>
+    </li>
+    {{end}}
+    {{if .Pager.HasNext}}
+    <li><a href="{{.Pager.PageLinkNext}}">&#187;</a></li>
+    {{else}}
+    <li class="disabled"><a>&#187;</a></li>
+    {{end}}
+</ul>
+{{end}}

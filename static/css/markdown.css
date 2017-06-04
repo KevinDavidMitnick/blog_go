@@ -1,0 +1,25 @@
+blockquote {
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    background-color: whitesmoke;
+    border-left: 4px solid #999999;
+    word-break: break-word;
+    font-size: 15px;
+    font-weight: 100;
+    line-height: 30px;
+}
+
+img {
+    max-width:780px;
+    _width:expression(this.width>550?"550px":this.width); 
+    height:auto;
+}
+
+pre code {
+    font-family: Consolas, monospace, monospace;
+    font-size: 0.9em;
+    line-height: 1.4em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}

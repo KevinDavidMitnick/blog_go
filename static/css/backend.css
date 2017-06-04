@@ -1,0 +1,36 @@
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.backend-width {
+	margin: 5px 20px;
+}
+
+.login-bar {
+	margin-top: 10px;
+}
+
+.login-bar a {
+	text-decoration: none;
+	font-size: 90%;
+}
+
+.pull-right {
+	float: right;
+}
+
+.cut-line {
+    margin: 0 5px;
+    color: #D6D6D6;
+}
+
+.mt20 {
+    margin-top: 20px !important;
+}

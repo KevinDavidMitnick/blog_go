@@ -1,0 +1,48 @@
+{
+    "debug": true,
+    "username": "UlricQin",
+    "password": "a",
+    "portrait": "/img/p.jpeg",
+    "motto": "Talk is cheap. Show me your code.",
+    "log": {
+        "access": "var/access.log",
+        "error": "var/error.log"
+    },
+    "http": {
+        "listen": "0.0.0.0:8000",
+        "secret": "f16a677edf49ead9975944ae65d5b8d6"
+    },
+    "mysql": {
+        "addr": "root:password@tcp(127.0.0.1:3306)/blog?charset=utf8&&loc=Asia%2FShanghai",
+        "idle": 5,
+        "max": 100,
+        "show_sql": true
+    },
+    "redis": {
+        "addr": "127.0.0.1:6379",
+        "idle": 5,
+        "max": 1000,
+        "timeout": {
+            "conn": 100,
+            "read": 1000,
+            "write": 1000
+        }
+    },
+    "cache": {
+        "provider": "memory",
+        "expire": 3600
+    },
+    "upload": "upload",
+    "qiniu": {
+        "enabled": false,
+        "bucket": "",
+        "access_key": "",
+        "secret_key": "",
+        "domain": ""
+    },
+    "contact": {
+        "weibo": "http://weibo.com/ulricqin",
+        "twitter": "https://twitter.com/ulricqin",
+        "github": "https://github.com/ulricqin"
+    }
+}

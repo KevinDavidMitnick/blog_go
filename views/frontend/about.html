@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{.Title}}</title>
+    {{ template "inc/frontend_head" . }}
+</head>
+
+<body>
+    <div id="layout" class="pure-g">
+        {{ template "inc/frontend_side" . }}
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <div>
+                <section class="post">
+                    <header class="post-header">
+                        <h2 class="post-title">
+                            <a href="#" style="font-family:Georgia;">About me</a>
+                        </h2>
+                    </header>
+                    <div class="post-description">
+                        {{safe .Content}}
+                    </div>
+                    {{if $.Login}}
+                    <div class="post-more" style="float:right;">
+                        <a class="pure-button pure-button-primary" href="/backend/about" style="text-decoration:none;">Edit</a>
+                    </div>
+                    {{end}}
+                </section>
+                {{ template "inc/frontend_footer" . }}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

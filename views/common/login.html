@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{ template "inc/backend_head" . }}
+</head>
+
+<body>
+    <div style="margin: 10px;">
+        <div class="pure-form">
+            <fieldset>
+                <input id="username" type="text" placeholder="Username">
+                <input id="password" type="password" placeholder="Password" onkeypress="if (event.keyCode == 13) login();">
+                <input type="hidden" id="callback" value="{{.callback}}">
+                <button type="button" class="pure-button pure-button-primary" onclick="login();">Login</button>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

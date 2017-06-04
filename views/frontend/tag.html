@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{{.Title}}</title>
+    {{ template "inc/frontend_head" . }}
+</head>
+
+<body>
+    <div id="layout" class="pure-g">
+        {{ template "inc/frontend_side" . }}
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <div>
+                <!-- A wrapper for all the blog posts -->
+                <div class="posts">
+                    <h1 class="content-subhead">Posts of {{$.Tag}}</h1>
+                    {{range $item := .List}}
+                    <section class="post">
+                        <header class="post-header">
+                            <h2 class="post-title">
+                                <a href="/article/{{$item.Url}}.html">{{$item.Title}}</a>
+                            </h2>
+                            <p class="post-meta">
+                                By <a class="post-author" href="#">{{$.Username}}</a> under
+                                {{range $tag := $item.TagsArray}}
+                                <a class="post-category" href="/tag/{{$tag}}">{{$tag}}</a>
+                                {{end}}
+                                {{if $.Login}}<a href="/backend/article/{{$item.Id}}/editor">Edit</a>{{end}}
+                            </p>
+                        </header>
+                        <div class="post-description">
+                            {{safe $item.HtmlSummary}}
+                        </div>
+                        <div class="post-more" style="float:right;">
+                            <a class="pure-button pure-button-primary" href="/article/{{$item.Url}}.html" style="text-decoration:none;">Read more...</a>
+                        </div>
+                    </section>
+                    {{end}}
+                </div>
+                {{ template "inc/pager" . }}
+                {{ template "inc/frontend_footer" . }}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

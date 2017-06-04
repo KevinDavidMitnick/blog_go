@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{ template "inc/backend_head" . }}
+</head>
+
+<body>
+    {{ template "inc/backend_menu" . }}
+    <div class="backend-width">
+        <table class="pure-table pure-table-horizontal">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Url</th>
+                    <th>Tags</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range $item := .Drafts}}
+                <tr>
+                    <td><a target="_blank" href="/backend/draft/{{$item.Url}}.html">{{$item.Title}}</a></td>
+                    <td><a target="_blank" href="/backend/draft/{{$item.Url}}.html">{{$item.Url}}</a></td>
+                    <td>{{$item.TagsReadable}}</td>
+                    <td>
+                        <a href="/backend/article/{{$item.Id}}/editor">
+                            edit
+                        </a>
+                        <span class="cut-line"></span>
+                        <a href="javascript:article_delete('{{$item.Id}}');">
+                            delete
+                        </a>
+                    </td>
+                </tr>
+                {{else}}
+                <tr><td colspan="4">No records</td></tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{ template "inc/backend_head" . }}
+</head>
+
+<body>
+    {{ template "inc/backend_menu" . }}
+    <div class="backend-width">
+        <div class="pure-form pure-form-stacked">
+            <fieldset>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="title">Title</label>
+                        <input id="title" class="pure-u-23-24" type="text" value="{{.Article.Title}}">
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="url">Url</label>
+                        <input id="url" class="pure-u-23-24" type="text" value="{{.Article.Url}}">
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="tags">Tags</label>
+                        <input id="tags" class="pure-u-23-24" type="text" value="{{.Article.TagsReadable}}">
+                    </div>
+                    {{if .Article}}
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="status">Status</label>
+                        <select id="status" class="pure-input-1-2">
+                            <option value="1" {{if eq .Article.Status 1}}selected{{end}}>Release</option>
+                            <option value="0" {{if eq .Article.Status 0}}selected{{end}}>Draft</option>
+                        </select>
+                    </div>
+                    {{else}}
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <label for="status">Status</label>
+                        <select id="status" class="pure-input-1-2">
+                            <option value="1">Release</option>
+                            <option value="0">Draft</option>
+                        </select>
+                    </div>
+                    {{end}}
+                    <div class="pure-u-1">
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content" cols="30" rows="25" class="pure-u-23-24">{{.Article.Content}}</textarea>
+                    </div>
+                </div>
+                <button type="button" class="pure-button pure-button-primary" onclick="article_update();">Submit</button>
+                <button type="button" class="pure-button" style="background: rgb(28, 184, 65); color:#fff;" onclick="upload();">Upload Image</button>
+                <input id="image" style="display:none;" type="file" name="image">
+                <span class="cut-line">&nbsp;</span>
+                <span id="image_url"></span>
+            </fieldset>
+        </div>
+    </div>
+    <input type="hidden" id="hid_article_id" value="{{.Article.Id}}">
+    <script>
+        $(function() {
+            $("#image").change(function() {
+                var file = this.files[0];
+                var fd = new FormData();
+                fd.append("image", file);
+                $.ajax({
+                    url: "/backend/upload",
+                    type: "POST",
+                    data: fd,
+                    async: false,  
+                    cache: false,  
+                    contentType: false,  
+                    processData: false, 
+                    success: function(json) {
+                        handle_json(json, function() {
+                            $("#image_url").text(json.data);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
